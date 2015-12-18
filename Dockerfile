@@ -3,7 +3,6 @@ FROM babim/debianbase
 MAINTAINER "Duc Anh Babim" <ducanh.babim@yahoo.com>
 
 RUN apt-get clean && \
-    apt-get update && \
     echo 'deb http://packages.dotdeb.org jessie all' >> /etc/apt/sources.list.d/dotweb.list && \
     echo 'deb-src http://packages.dotdeb.org jessie all' >> /etc/apt/sources.list.d/dotweb.list && \
     wget http://www.dotdeb.org/dotdeb.gpg -O- |apt-key add – && \
