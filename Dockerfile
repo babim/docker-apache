@@ -6,6 +6,7 @@ RUN apt-get clean && \
     apt-get update && \
     echo 'deb http://packages.dotdeb.org jessie all' >> /etc/apt/sources.list.d/dotweb.list && \
     echo 'deb-src http://packages.dotdeb.org jessie all' >> /etc/apt/sources.list.d/dotweb.list && \
+    wget http://www.dotdeb.org/dotdeb.gpg -O- |apt-key add – && \
     apt-get update && \
     apt-get install apache2 php5 php5-json php5-gd php5-sqlite curl php5-curl php-xml-parser php5-ldap php5-mysql php5-pgsql php5-imap php5-tidy php5-xmlrpc php5-mcrypt php5-memcache php-apc php5-intl ImageMagick -y --force-yes && \
     apt-get clean && \
