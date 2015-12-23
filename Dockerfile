@@ -33,7 +33,7 @@ ENV APACHE_DOCUMENTROOT /var/www
 ENV LC_ALL C.UTF-8
 ENV TZ Asia/Ho_Chi_Minh
 
-EXPOSE 80
+EXPOSE 80 443
 ADD start.sh /start.sh
 RUN chmod 0755 /start.sh
 CMD ["bash", "start.sh"
