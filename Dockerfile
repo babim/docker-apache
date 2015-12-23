@@ -16,8 +16,11 @@ RUN apt-get update && \
 RUN sed -ri 's/^display_errors\s*=\s*Off/display_errors = On/g' /etc/php5/apache2/php.ini
 RUN sed -ri 's/^display_errors\s*=\s*Off/display_errors = On/g' /etc/php5/cli/php.ini
 
-# Allow root from SSH
-# RUN sed -ri 's/^PermitRootLogin.*$/PermitRootLogin yes/g' /etc/ssh/sshd_config
+RUN sed -i 's/\;date\.timezone\ \=/date\.timezone\ \=\ Europe\/Stockholm/g' /etc/php5/cli/php.ini
+RUN sed -i 's/\;date\.timezone\ \=/date\.timezone\ \=\ Europe\/Stockholm/g' /etc/php5/apache2/php.ini
+
+# Define mountable directories.
+VOLUME ["/var/www"]
 
 # Set Apache environment variables (can be changed on docker run with -e)
 ENV APACHE_RUN_USER www-data
@@ -36,4 +39,4 @@ ENV TZ Asia/Ho_Chi_Minh
 EXPOSE 80 443
 ADD start.sh /start.sh
 RUN chmod 0755 /start.sh
-CMD ["bash", "start.sh"]
+CMD ["start.sh"]
