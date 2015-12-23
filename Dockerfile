@@ -36,4 +36,4 @@ ENV TZ Asia/Ho_Chi_Minh
 EXPOSE 80 443
 ADD start.sh /start.sh
 RUN chmod 0755 /start.sh
-CMD ["bash", "start.sh"
+CMD ["bash", "start.sh"]
