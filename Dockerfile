@@ -1,7 +1,5 @@
 FROM babim/ubuntubase
 
-MAINTAINER "Duc Anh Babim" <ducanh.babim@yahoo.com>
-
 RUN apt-get update && \
     apt-get install software-properties-common -y && \
     add-apt-repository ppa:ondrej/php5-5.6 -y && \
@@ -32,8 +30,6 @@ ENV APACHE_SERVERADMIN admin@localhost
 ENV APACHE_SERVERNAME localhost
 ENV APACHE_SERVERALIAS docker.localhost
 ENV APACHE_DOCUMENTROOT /var/www
-ENV LC_ALL C.UTF-8
-ENV TZ Asia/Ho_Chi_Minh
 
 EXPOSE 80 443
 ADD start.sh /start.sh
