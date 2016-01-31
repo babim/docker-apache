@@ -1,20 +1,13 @@
 FROM babim/ubuntubase
 
 RUN apt-get update && \
-    apt-get install software-properties-common -y && \
-    add-apt-repository ppa:ondrej/php5-5.6 -y && \
     apt-get update && \
-    apt-get install apache2 php5 php5-json php5-gd php5-sqlite curl php5-curl php-xml-parser php5-ldap php5-mysql php5-pgsql php5-imap php5-tidy php5-xmlrpc php5-mcrypt php5-memcache php-apc php5-intl ImageMagick -y --force-yes && \
+    apt-get install apache2 curl php5-curl php-xml-parser --force-yes && \
     apt-get clean && \
     apt-get autoclean && \
     apt-get autoremove && \
     a2enmod rewrite && \
     a2enmod headers
-
-RUN sed -ri 's/^display_errors\s*=\s*Off/display_errors = On/g' /etc/php5/apache2/php.ini && \
-    sed -ri 's/^display_errors\s*=\s*Off/display_errors = On/g' /etc/php5/cli/php.ini && \
-    sed -i 's/\;date\.timezone\ \=/date\.timezone\ \=\ Asia\/Ho_Chi_Minh/g' /etc/php5/cli/php.ini && \
-    sed -i 's/\;date\.timezone\ \=/date\.timezone\ \=\ Asia\/Ho_Chi_Minh/g' /etc/php5/apache2/php.ini
 
 # Define mountable directories.
 VOLUME ["/var/www"]
