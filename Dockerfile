@@ -2,7 +2,7 @@ FROM babim/ubuntubase
 
 RUN apt-get update && \
     apt-get update && \
-    apt-get install apache2 -y --force-yes && a2enmod proxy proxy_fcgi && a2enmod rewrite && service apache2 restart && \
+    apt-get install apache2 libapache2-mod-fcgid -y --force-yes && a2enmod proxy proxy_fcgi && a2enmod rewrite && \
     apt-get clean && \
     apt-get autoclean && \
     apt-get autoremove && \
