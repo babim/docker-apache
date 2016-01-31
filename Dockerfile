@@ -2,7 +2,7 @@ FROM babim/ubuntubase
 
 RUN apt-get update && \
     apt-get update && \
-    apt-get install apache2 curl -y --force-yes && \
+    apt-get install apt-get install apache2 apache2-mpm-worker libapache2-mod-fcgid apache2-suexec-custom -y --force-yes && \
     apt-get clean && \
     apt-get autoclean && \
     apt-get autoremove && \
