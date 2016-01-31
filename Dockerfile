@@ -6,7 +6,6 @@ RUN apt-get update && \
     apt-get clean && \
     apt-get autoclean && \
     apt-get autoremove && \
-    a2enmod rewrite && \
     a2enmod headers
 
 # Define mountable directories.
