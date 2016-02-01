@@ -2,8 +2,8 @@ FROM babim/ubuntubase
 
 RUN apt-get update && \
     apt-get install software-properties-common -y && \
-    add-apt-repository ppa:ondrej/php-7.0 -y \
-    && LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/apache2 -y \
+    add-apt-repository ppa:ondrej/php-7.0 -y && \
+    add-apt-repository ppa:ondrej/apache2 -y && \
     apt-get update && \
     apt-get install -y --force-yes \
     apache2 php7.0-common libapache2-mod-php7.0 php7.0-cgi php7.0-cli php7.0-phpdbg libphp7.0-embed php7.0-dev php7.0-dbg \
