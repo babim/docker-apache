@@ -1,5 +1,4 @@
 #!/bin/bash
-
 export TERM=xterm
 
 if [ -z "`/etc/apache2/sites-available`" ] 
