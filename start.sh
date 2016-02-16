@@ -2,7 +2,7 @@
 
 export TERM=xterm
 
-if [ -z "`etc/apache2/sites-available`" ] 
+if [ -z "`/etc/apache2/sites-available`" ] 
 then
 	rsync -a /etc-start/apache2/sites-available/* /etc/apache2/sites-available
 fi
