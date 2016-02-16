@@ -1,12 +1,12 @@
 #!/bin/bash
 export TERM=xterm
 
-if [ -z "`/etc/apache2/sites-available`" ] 
+if [ -z "`ls /etc/apache2/sites-available`" ] 
 then
 	cp -R /etc-start/apache2/sites-available/ /etc/apache2/sites-available
 fi
 
-if [ -z "`/etc/php/7.0`" ] 
+if [ -z "`ls /etc/php/7.0`" ] 
 then
 	cp -R /etc-start/php/7.0/ /etc/php/7.0
 fi
