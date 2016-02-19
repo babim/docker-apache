@@ -8,7 +8,7 @@ fi
 
 if [ -z "`ls /etc/php5`" ] 
 then
-	cp -R /etc-start/php5/ /etc/php5
+	cp -R /etc-start/php5/* /etc/php5
 fi
 
 # Start apache
