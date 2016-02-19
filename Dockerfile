@@ -33,7 +33,7 @@ RUN sed -ri 's/^display_errors\s*=\s*Off/display_errors = On/g' /etc/php/7.0/apa
 VOLUME ["/var/www", "/etc/apache2/sites-available/", "/etc/php/7.0"]
 RUN mkdir -p /etc-start/apache2/sites-available \
     && cp -R /etc/apache2/sites-available/* /etc-start/apache2/sites-available \
-    && mkdir -p /etc-start/php/7.0 &&  && cp -R /etc/php/7.0/* /etc-start/php/7.0
+    && mkdir -p /etc-start/php/7.0 &&  cp -R /etc/php/7.0/* /etc-start/php/7.0
 
 # Set Apache environment variables (can be changed on docker run with -e)
 ENV APACHE_RUN_USER www-data
