@@ -9,7 +9,8 @@ RUN apt-get update && \
 
 # Define mountable directories.
 VOLUME ["/var/www", "/etc/apache2/sites-available/"]
-RUN cp -R /etc/apache2/sites-available /etc-start/apache2/sites-available
+RUN mkdir -p /etc-start/apache2/sites-available && \
+    cp -R /etc/apache2/sites-available/* /etc-start/apache2/sites-available
 
 # Set Apache environment variables (can be changed on docker run with -e)
 ENV APACHE_RUN_USER www-data
