@@ -2,7 +2,7 @@ FROM babim/ubuntubase
 
 RUN apt-get update && \
     apt-get install software-properties-common -y && \
-    add-apt-repository ppa:ondrej/php-7 -y && \
+    add-apt-repository ppa:ondrej/php -y && \
     add-apt-repository ppa:ondrej/apache2 -y && \
     apt-get update && \
     apt-get install -y --force-yes \
