@@ -8,7 +8,7 @@ RUN apt-get update && \
     a2enmod headers
 
 # Define mountable directories.
-VOLUME ["/var/www", "/etc/apache2/sites-available/"]
+VOLUME ["/var/log/apache2", "/var/www", "/etc/apache2/sites-available/"]
 RUN mkdir -p /etc-start/apache2/sites-available && \
     cp -R /etc/apache2/sites-available/* /etc-start/apache2/sites-available
 
