@@ -9,7 +9,7 @@ RUN apt-get update && \
 
 # Define mountable directories.
 VOLUME ["/var/log/apache2", "/var/www", "/etc/apache2/sites-available/"]
-RUN mkdir -p /etc-start/apache2/sites-available && \
+RUN mkdir -p /etc-start/apache2/sites-available && mkdir -p /etc-start/apache2/sites-enable && \
     cp -R /etc/apache2/sites-available/* /etc-start/apache2/sites-available && \
     cp -R /etc/apache2/sites-enable/* /etc-start/apache2/sites-enable
 
