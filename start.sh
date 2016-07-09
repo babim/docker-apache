@@ -6,9 +6,9 @@ then
 	cp -R /etc-start/apache2/sites-available/* /etc/apache2/sites-available
 fi
 
-if [ -z "`ls /etc/apache2/sites-enable`" ] 
+if [ -z "`ls /etc/apache2/sites-enabled`" ] 
 then
-	cp -R /etc-start/apache2/sites-enable/* /etc/apache2/sites-enable
+	cp -R /etc-start/apache2/sites-enabled/* /etc/apache2/sites-enabled
 fi
 
 if [ -z "`ls /etc/php/7.0`" ] 
