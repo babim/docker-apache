@@ -28,7 +28,8 @@ RUN sed -ri 's/^display_errors\s*=\s*Off/display_errors = On/g' /etc/php5/apache
 VOLUME ["/var/log/apache2", "/var/www", "/etc/apache2/sites-available/", "/etc/apache2/sites-enabled/", "/etc/php5"]
 RUN mkdir -p /etc-start/apache2/sites-available && mkdir -p /etc-start/apache2/sites-enabled && \
     cp -R /etc/apache2/sites-available/* /etc-start/apache2/sites-available && \
-    cp -R /etc/apache2/sites-enabled/* /etc-start/apache2/sites-enabled
+    cp -R /etc/apache2/sites-enabled/* /etc-start/apache2/sites-enabled && \
+    mkdir -p /etc-start/php5 &&  cp -R /etc/php5/* /etc-start/php5
 
 # Set Apache environment variables (can be changed on docker run with -e)
 ENV APACHE_RUN_USER www-data
