@@ -4,7 +4,7 @@ RUN apt-get update && \
     apt-get install software-properties-common -y && \
     add-apt-repository ppa:ondrej/php -y && \
     apt-get update && \
-    apt-get install apache2 php5.6 php5.6-json php5.6-gd php5.6-sqlite curl php5.6-curl php-xml-parser php5.6-ldap php5.6-mysql php5.6-pgsql php5.6-imap php5.6-tidy php5.6-xmlrpc php5.6-mcrypt php5.6-memcache php-apc php5.6-intl ImageMagick -y --force-yes && \
+    apt-get install apache2 php5.6 php5.6-json php5.6-gd php5.6-sqlite curl php5.6-curl php-xml-parser php5.6-ldap php5.6-mysql php5.6-pgsql php5.6-imap php5.6-tidy php5.6-xmlrpc php5.6-mcrypt php5.6-memcache php5.6-intl ImageMagick -y --force-yes && \
     apt-get clean && \
     apt-get autoclean && \
     apt-get autoremove && \
