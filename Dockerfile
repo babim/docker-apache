@@ -13,25 +13,25 @@ RUN apt-get update && \
     a2enmod rewrite && \
     a2enmod headers
 
-RUN sed -ri 's/^display_errors\s*=\s*Off/display_errors = On/g' /etc/php5/apache2/php.ini && \
-    sed -ri 's/^display_errors\s*=\s*Off/display_errors = On/g' /etc/php5/cli/php.ini && \
-    sed -i 's/\;date\.timezone\ \=/date\.timezone\ \=\ Asia\/Ho_Chi_Minh/g' /etc/php5/cli/php.ini && \
-    sed -i 's/\;date\.timezone\ \=/date\.timezone\ \=\ Asia\/Ho_Chi_Minh/g' /etc/php5/apache2/php.ini && \
-    sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 520M/" /etc/php5/apache2/php.ini && \
-    sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 520M/" /etc/php5/cli/php.ini && \
-    sed -i "s/post_max_size = 8M/post_max_size = 520M/" /etc/php5/apache2/php.ini && \
-    sed -i "s/post_max_size = 8M/post_max_size = 520M/" /etc/php5/cli/php.ini && \
-    sed -i "s/max_input_time = 60/max_input_time = 3600/" /etc/php5/apache2/php.ini && \
-    sed -i "s/max_execution_time = 30/max_execution_time = 3600/" /etc/php5/apache2/php.ini && \
-    sed -i "s/max_input_time = 60/max_input_time = 3600/" /etc/php5/cli/php.ini && \
-    sed -i "s/max_execution_time = 30/max_execution_time = 3600/" /etc/php5/cli/php.ini
+RUN sed -ri 's/^display_errors\s*=\s*Off/display_errors = On/g' /etc/php/5.6/apache2/php.ini && \
+    sed -ri 's/^display_errors\s*=\s*Off/display_errors = On/g' /etc/php/5.6/cli/php.ini && \
+    sed -i 's/\;date\.timezone\ \=/date\.timezone\ \=\ Asia\/Ho_Chi_Minh/g' /etc/php/5.6/cli/php.ini && \
+    sed -i 's/\;date\.timezone\ \=/date\.timezone\ \=\ Asia\/Ho_Chi_Minh/g' /etc/php/5.6/apache2/php.ini && \
+    sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 520M/" /etc/php/5.6/apache2/php.ini && \
+    sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 520M/" /etc/php/5.6/cli/php.ini && \
+    sed -i "s/post_max_size = 8M/post_max_size = 520M/" /etc/php/5.6/apache2/php.ini && \
+    sed -i "s/post_max_size = 8M/post_max_size = 520M/" /etc/php/5.6/cli/php.ini && \
+    sed -i "s/max_input_time = 60/max_input_time = 3600/" /etc/php/5.6/apache2/php.ini && \
+    sed -i "s/max_execution_time = 30/max_execution_time = 3600/" /etc/php/5.6/apache2/php.ini && \
+    sed -i "s/max_input_time = 60/max_input_time = 3600/" /etc/php/5.6/cli/php.ini && \
+    sed -i "s/max_execution_time = 30/max_execution_time = 3600/" /etc/php/5.6/cli/php.ini
 
 # Define mountable directories.
-VOLUME ["/var/log/apache2", "/var/www", "/etc/apache2/sites-available/", "/etc/apache2/sites-enabled/", "/etc/php5"]
+VOLUME ["/var/log/apache2", "/var/www", "/etc/apache2/sites-available/", "/etc/apache2/sites-enabled/", "/etc/php/5.6"]
 RUN mkdir -p /etc-start/apache2/sites-available && mkdir -p /etc-start/apache2/sites-enabled && \
     cp -R /etc/apache2/sites-available/* /etc-start/apache2/sites-available && \
     cp -R /etc/apache2/sites-enabled/* /etc-start/apache2/sites-enabled && \
-    mkdir -p /etc-start/php5 &&  cp -R /etc/php5/* /etc-start/php5
+    mkdir -p /etc-start/php/5.6 &&  cp -R /etc/php/5.6/* /etc-start/php/5.6
 
 # Set Apache environment variables (can be changed on docker run with -e)
 ENV APACHE_RUN_USER www-data
