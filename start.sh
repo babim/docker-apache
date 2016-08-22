@@ -11,7 +11,7 @@ then
 	cp -R /etc-start/apache2/sites-enabled/* /etc/apache2/sites-enabled
 fi
 
-if [ -z "`ls /etc/php5`" ] 
+if [ -z "`ls /etc/php/5.6`" ] 
 then
 	cp -R /etc-start/php/5.6/* /etc/php/5.6
 fi
