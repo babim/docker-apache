@@ -16,6 +16,7 @@ then
 	cp -R /etc-start/php/7.0/* /etc/php/7.0
 fi
 
+service varnish start
 # Start php7
 #service php7.0 start
 # Start apache
