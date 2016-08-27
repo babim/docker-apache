@@ -16,5 +16,6 @@ then
 	cp -R /etc-start/php/5.6/* /etc/php/5.6
 fi
 
+service varnish start
 # Start apache
 /usr/sbin/apache2 -D FOREGROUND
