@@ -23,7 +23,8 @@ RUN apt-get update && \
 RUN apt-get install -y php7.0-bcmath && \
     apt-get clean && \
     apt-get autoclean && \
-    apt-get autoremove
+    apt-get autoremove && \
+    rm -rf /var/lib/apt/lists/**
 
 RUN sed -ri 's/^display_errors\s*=\s*Off/display_errors = On/g' /etc/php/7.0/apache2/php.ini && \
     sed -ri 's/^display_errors\s*=\s*Off/display_errors = On/g' /etc/php/7.0/cli/php.ini && \
