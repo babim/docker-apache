@@ -5,6 +5,7 @@ RUN apt-get update && \
     apt-get clean && \
     apt-get autoclean && \
     apt-get autoremove && \
+    rm -rf /var/lib/apt/lists/** && \
     a2enmod headers
 
 # Define mountable directories.
