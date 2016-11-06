@@ -1,16 +1,11 @@
-#!/bin/bash
+#!/bin/sh
 
 export TERM=xterm
 
-if [ -z "`ls /etc/apache2/sites-available`" ] 
+if [ -z "`ls /etc/apache2`" ] 
 then
-	cp -R /etc-start/apache2/sites-available/* /etc/apache2/sites-available
-fi
-
-if [ -z "`ls /etc/apache2/sites-enabled`" ] 
-then
-	cp -R /etc-start/apache2/sites-enabled/* /etc/apache2/sites-enabled
+	cp -R /etc-start/apache2/* /etc/apache2
 fi
 
 # Start apache
-/usr/sbin/apache2 -D FOREGROUND
+exec /usr/sbin/httpd -D FOREGROUND
