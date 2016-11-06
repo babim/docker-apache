@@ -1,19 +1,14 @@
 #!/bin/sh
 export TERM=xterm
 
-if [ -z "`ls /etc/apache2/sites-available`" ] 
+if [ -z "`ls /etc/apache2`" ] 
 then
-	cp -R /etc-start/apache2/sites-available/* /etc/apache2/sites-available
+	cp -R /etc-start/apache2/* /etc/apache2
 fi
 
-if [ -z "`ls /etc/apache2/sites-enabled`" ] 
+if [ -z "`ls /etc/php5`" ] 
 then
-	cp -R /etc-start/apache2/sites-enabled/* /etc/apache2/sites-enabled
-fi
-
-if [ -z "`ls /etc/php/5.6`" ] 
-then
-	cp -R /etc-start/php/5.6/* /etc/php/5.6
+	cp -R /etc-start/php5/* /etc/php5
 fi
 
 # Start apache
