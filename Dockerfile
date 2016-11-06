@@ -29,10 +29,10 @@ RUN sed -ri 's/^display_errors\s*=\s*Off/display_errors = On/g' /etc/php/5.6/apa
 
 # Define mountable directories.
 VOLUME ["/var/log/apache2", "/var/www", "/etc/apache2/sites-available/", "/etc/apache2/sites-enabled/", "/etc/php/5.6"]
-RUN mkdir -p /etc-start/apache2 /etc-start/php && \
-    mv /etc/apache2/sites-available /etc-start/apache2/ && mkdir /etc/apache2/sites-available && \
-    mv /etc/apache2/sites-enabled /etc-start/apache2/ && mkdir /etc/apache2/sites-enabled && \
-    mv /etc/php/5.6 /etc-start/php/ && mkdir /etc/php/5.6
+RUN mkdir -p /etc-start/apache2/sites-available && mkdir -p /etc-start/apache2/sites-enabled && \
+    cp -R /etc/apache2/sites-available/* /etc-start/apache2/sites-available && \
+    cp -R /etc/apache2/sites-enabled/* /etc-start/apache2/sites-enabled && \
+    mkdir -p /etc-start/php/5.6 &&  cp -R /etc/php/5.6/* /etc-start/php/5.6
 
 # Set Apache environment variables (can be changed on docker run with -e)
 ENV APACHE_RUN_USER www-data
