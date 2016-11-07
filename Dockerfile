@@ -25,6 +25,9 @@ RUN mkdir -p /etc-start/apache2 && \
     cp -R /etc/apache2/* /etc-start/apache2 && \
     mkdir -p /etc-start/php7 &&  cp -R /etc/php7/* /etc-start/php7
 
+# fix apache pid no suck file
+RUN mkdir -p /run/apache2
+
 # Set Apache environment variables (can be changed on docker run with -e)
 ENV APACHE_RUN_USER apache
 ENV APACHE_RUN_GROUP apache
