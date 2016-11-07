@@ -19,4 +19,4 @@ fi
 # Start php7
 #service php7.0 start
 # Start apache
-/usr/sbin/apache2 -D FOREGROUND
+apache2 -D FOREGROUND
