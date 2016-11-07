@@ -8,4 +8,4 @@ then
 fi
 
 # Start apache
-exec /usr/sbin/httpd -D FOREGROUND
+exec httpd -D FOREGROUND
