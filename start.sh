@@ -31,4 +31,4 @@ fi
 # Start php7
 #service php7.0 start
 # Start apache
-exec /usr/sbin/httpd -D FOREGROUND
+exec httpd -D FOREGROUND
