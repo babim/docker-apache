@@ -29,4 +29,4 @@ fi
 	sed -i "s/max_execution_time = 30/max_execution_time = 3600/" /etc/php5/php.ini
 	
 # Start apache
-exec /usr/sbin/httpd -D FOREGROUND
+exec httpd -D FOREGROUND
