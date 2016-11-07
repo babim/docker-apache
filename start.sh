@@ -17,4 +17,4 @@ then
 fi
 
 # Start apache
-/usr/sbin/apache2 -D FOREGROUND
+apache2 -D FOREGROUND
