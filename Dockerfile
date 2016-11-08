@@ -14,9 +14,9 @@ RUN sed -ri 's/^display_errors\s*=\s*Off/display_errors = On/g' /etc/php5/php.in
 
 # Define mountable directories.
 VOLUME ["/var/log/apache2", "/var/www", "/etc/apache2", "/etc/php5"]
-RUN mkdir -p /etc-start/apache2 && \
-    cp -R /etc/apache2/* /etc-start/apache2 && \
-    mkdir -p /etc-start/php5 &&  cp -R /etc/php5/* /etc-start/php5
+RUN mkdir -p /etc-start/apache2 && cp -R /etc/apache2/* /etc-start/apache2 && \
+    mkdir -p /etc-start/php7 &&  cp -R /etc/php7/* /etc-start/php7 && \
+    mkdir -p /etc-start/www  && cp -R /var/www/* /etc-start/www
 
 # fix apache pid no suck file
 RUN mkdir -p /run/apache2
