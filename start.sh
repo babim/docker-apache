@@ -2,9 +2,9 @@
 export TERM=xterm
 
 # Prepare
-if [ ! -z "`ls /etc/apache2`" ]; then cp -R /etc-start/apache2/* /etc/apache2; fi
-if [ ! -z "`ls /etc/php5`" ]; then cp -R /etc-start/php5/* /etc/php5; fi
-if [ ! -z "`ls /var/www`" ]; then cp -R /etc-start/www/* /var/www; fi
+if [ -z "`ls /etc/apache2`" ]; then cp -R /etc-start/apache2/* /etc/apache2; fi
+if [ -z "`ls /etc/php5`" ]; then cp -R /etc-start/php5/* /etc/php5; fi
+if [ -z "`ls /var/www`" ]; then cp -R /etc-start/www/* /var/www; fi
 
    # Set environments
     TIMEZONE1=${TIMEZONE:-Asia/Ho_Chi_Minh}
