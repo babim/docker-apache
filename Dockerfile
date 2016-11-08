@@ -13,7 +13,7 @@ RUN apk add --no-cache \
 # Define mountable directories.
 VOLUME ["/var/log/apache2", "/var/www", "/etc/apache2/", "/etc/php7"]
 RUN mkdir -p /etc-start/apache2 && cp -R /etc/apache2/* /etc-start/apache2 && \
-    mkdir -p /etc-start/php7 &&  cp -R /etc/php7/* /etc-start/php7 && \
+    mkdir -p /etc-start/php7 && cp -R /etc/php7/* /etc-start/php7 && \
     mkdir -p /etc-start/www  && cp -R /var/www/* /etc-start/www
 
 # fix apache pid no suck file
