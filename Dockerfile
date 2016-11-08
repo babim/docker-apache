@@ -10,15 +10,6 @@ RUN apk add --no-cache \
     php7-pear php7-pdo_dblib php7-pdo_pgsql php7-pdo_odbc php7-pdo_sqlite php7-pdo_mysql php7-pdo
 # disable: php7-memcached php7-apcu
 
-RUN sed -ri 's/^display_errors\s*=\s*Off/display_errors = On/g' /etc/php7/php.ini && \
-    sed -i 's/\;date\.timezone\ \=/date\.timezone\ \=\ Asia\/Ho_Chi_Minh/g' /etc/php7/php.ini && \
-    sed -i "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/" /etc/php7/php.ini && \
-    sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 520M/" /etc/php7/php.ini && \
-    sed -i "s/post_max_size = 8M/post_max_size = 520M/" /etc/php7/php.ini && \
-    sed -i "s/max_input_time = 60/max_input_time = 3600/" /etc/php7/php.ini && \
-    sed -i "s/max_execution_time = 30/max_execution_time = 3600/" /etc/php7/php.ini && \
-    sed -i "s/;opcache.enable=0/opcache.enable=0/" /etc/php7/php.ini
-
 # Define mountable directories.
 VOLUME ["/var/log/apache2", "/var/www", "/etc/apache2/", "/etc/php7"]
 RUN mkdir -p /etc-start/apache2 && cp -R /etc/apache2/* /etc-start/apache2 && \
