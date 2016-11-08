@@ -4,6 +4,7 @@ export TERM=xterm
 
 # Prepare
 if [ -z "`ls /etc/apache2`" ]; then cp -R /etc-start/apache2/* /etc/apache2; fi
+sleep 2
 if [ -z "`ls /var/www`" ]; then cp -R /etc-start/www/* /var/www; fi
 
 # Start apache
