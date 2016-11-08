@@ -8,7 +8,7 @@ RUN apk add --no-cache apache2 php5-apache2 imagemagick \
 # Define mountable directories.
 VOLUME ["/var/log/apache2", "/var/www", "/etc/apache2", "/etc/php5"]
 RUN mkdir -p /etc-start/apache2 && cp -R /etc/apache2/* /etc-start/apache2 && \
-    mkdir -p /etc-start/php5 &&  cp -R /etc/php5/* /etc-start/php5 && \
+    mkdir -p /etc-start/php5 && cp -R /etc/php5/* /etc-start/php5 && \
     mkdir -p /etc-start/www  && cp -R /var/www/* /etc-start/www
 
 # fix apache pid no suck file
