@@ -23,7 +23,5 @@ if [ ! -z "`ls /var/www`" ]; then cp -R /etc-start/www/* /var/www; fi
     	sed -i "s/max_input_time = 60/max_input_time = 3600/" /etc/php7/php.ini && \
 	sed -i "s/max_execution_time = 30/max_execution_time = 3600/" /etc/php7/php.ini
 
-# Start php7
-#service php7.0 start
 # Start apache
 exec httpd -D FOREGROUND
