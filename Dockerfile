@@ -9,10 +9,8 @@ RUN apt-get update && \
     a2enmod headers
 
 # Define mountable directories.
-VOLUME ["/var/log/apache2", "/var/www", "/etc/apache2/sites-available/", "/etc/apache2/sites-enabled"]
-RUN mkdir -p /etc-start/apache2/sites-available && mkdir -p /etc-start/apache2/sites-enabled && \
-    cp -R /etc/apache2/sites-available/* /etc-start/apache2/sites-available && \
-    cp -R /etc/apache2/sites-enabled/* /etc-start/apache2/sites-enabled
+VOLUME ["/var/log/apache2", "/var/www", "/etc/apache2"]
+RUN mkdir -p /etc-start/apache2 && cp -R /etc/apache2/* /etc-start/apache2
 
 # Set Apache environment variables (can be changed on docker run with -e)
 ENV APACHE_RUN_USER www-data
