@@ -11,8 +11,9 @@ RUN apt-get update && \
     php7.0-cgi php7.0-cli php7.0-phpdbg libphp7.0-embed php7.0-dev php-xdebug sqlite3 \
     php7.0-curl php7.0-gd php7.0-imap php7.0-interbase php7.0-intl php7.0-ldap php7.0-mcrypt php7.0-readline php7.0-odbc \
     php7.0-pgsql php7.0-pspell php7.0-recode php7.0-tidy php7.0-xmlrpc php7.0 php7.0-json php-all-dev php7.0-sybase \
-    php7.0-sqlite3 php7.0-mysql php7.0-opcache php7.0-bz2 php7.0-mbstring php7.0-zip php-apcu php-apcu-bc php-imagick \
-	php-memcached php-pear libsasl2-dev libssl-dev libsslcommon2-dev libcurl4-openssl-dev npm nodejs-legacy && \
+    php7.0-sqlite3 php7.0-mysql php7.0-opcache php7.0-bz2 php7.0-mbstring php7.0-zip php-apcu php-imagick \
+    php-memcached php-pear libsasl2-dev libssl-dev libsslcommon2-dev libcurl4-openssl-dev npm nodejs-legacy && \
+    php7.0-gmp php7.0-snmp php7.0-xml php7.0-bcmath php7.0-enchant php7.0-soap php7.0-xsl && \
     a2enmod rewrite && \
     a2enmod headers && \
     npm install -g grunt-cli bower
@@ -20,30 +21,14 @@ RUN apt-get update && \
 	#&& echo "extension=mongodb.so" >> /etc/php/7.0/apache2/php.ini \
 	#&& echo "extension=mongodb.so" >> /etc/php/7.0/cli/php.ini
 	
-RUN apt-get install -y php7.0-bcmath && \
-    apt-get clean && \
+RUN apt-get clean && \
     apt-get autoclean && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/**
 
-RUN sed -ri 's/^display_errors\s*=\s*Off/display_errors = On/g' /etc/php/7.0/apache2/php.ini && \
-    sed -ri 's/^display_errors\s*=\s*Off/display_errors = On/g' /etc/php/7.0/cli/php.ini && \
-    sed -i 's/\;date\.timezone\ \=/date\.timezone\ \=\ Asia\/Ho_Chi_Minh/g' /etc/php/7.0/cli/php.ini && \
-    sed -i 's/\;date\.timezone\ \=/date\.timezone\ \=\ Asia\/Ho_Chi_Minh/g' /etc/php/7.0/apache2/php.ini && \
-    sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 520M/" /etc/php/7.0/apache2/php.ini && \
-    sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 520M/" /etc/php/7.0/cli/php.ini && \
-    sed -i "s/post_max_size = 8M/post_max_size = 520M/" /etc/php/7.0/apache2/php.ini && \
-    sed -i "s/post_max_size = 8M/post_max_size = 520M/" /etc/php/7.0/cli/php.ini && \
-    sed -i "s/max_input_time = 60/max_input_time = 3600/" /etc/php/7.0/apache2/php.ini && \
-    sed -i "s/max_execution_time = 30/max_execution_time = 3600/" /etc/php/7.0/apache2/php.ini && \
-    sed -i "s/max_input_time = 60/max_input_time = 3600/" /etc/php/7.0/cli/php.ini && \
-    sed -i "s/max_execution_time = 30/max_execution_time = 3600/" /etc/php/7.0/cli/php.ini
-
 # Define mountable directories.
-VOLUME ["/var/log/apache2", "/var/www", "/etc/apache2/sites-available/", "/etc/apache2/sites-enabled/", "/etc/php/7.0"]
-RUN mkdir -p /etc-start/apache2/sites-available && mkdir -p /etc-start/apache2/sites-enabled && \
-    cp -R /etc/apache2/sites-available/* /etc-start/apache2/sites-available && \
-    cp -R /etc/apache2/sites-enabled/* /etc-start/apache2/sites-enabled && \
+VOLUME ["/var/log/apache2", "/var/www", "/etc/php/7.0"]
+RUN mkdir -p /etc-start/apache2 && cp -R /etc/apache2/* /etc-start/apache2 && \
     mkdir -p /etc-start/php/7.0 &&  cp -R /etc/php/7.0/* /etc-start/php/7.0
 
 # Set Apache environment variables (can be changed on docker run with -e)
