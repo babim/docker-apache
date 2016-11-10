@@ -2,7 +2,7 @@
 export TERM=xterm
 
 if [ -z "`ls /etc/apache2`" ]; then cp -R /etc-start/apache2/* /etc/apache2; fi
-if [ -z "`ls /etc/php/5.6`" ]; then cp -R /etc-start/php/5.6/* /etc/php/5.6; fi
+if [ -z "`ls /etc/php`" ]; then cp -R /etc-start/php/* /etc/php; fi
 
    # Set environments
     TIMEZONE1=${TIMEZONE:-Asia/Ho_Chi_Minh}
