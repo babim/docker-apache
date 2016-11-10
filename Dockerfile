@@ -27,9 +27,9 @@ RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/**
 
 # Define mountable directories.
-VOLUME ["/var/log/apache2", "/var/www", "/etc/php/7.0"]
+VOLUME ["/var/log/apache2", "/var/www", "/etc/apache2", "/etc/php"]
 RUN mkdir -p /etc-start/apache2 && cp -R /etc/apache2/* /etc-start/apache2 && \
-    mkdir -p /etc-start/php/7.0 &&  cp -R /etc/php/7.0/* /etc-start/php/7.0
+    mkdir -p /etc-start/php &&  cp -R /etc/php/* /etc-start/php
 
 # Set Apache environment variables (can be changed on docker run with -e)
 ENV APACHE_RUN_USER www-data
