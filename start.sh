@@ -34,7 +34,7 @@ if [ -z "`ls /var/www`" ]; then cp -R /etc-start/www/* /var/www; fi
 
 # set ID docker run
 agid=${agid:-$auid}
-auser=www-data
+auser=apache
 
 if [[ -z "${auid}" ]]; then
   echo "start"
