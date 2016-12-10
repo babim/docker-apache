@@ -24,6 +24,19 @@ if [ -z "`ls /var/www`" ]; then cp -R /etc-start/www/* /var/www; fi
     	-e "s/max_input_time = 60/max_input_time = ${MAX_INPUT_TIME1}/" \
 	-e "s/max_execution_time = 30/max_execution_time = ${MAX_EXECUTION_TIME1}/" \
 	/etc/php5/php.ini
-	
+
+# set ID docker run
+agid=${agid:-$auid}
+auser=apache
+
+if [[ -z "${auid}" ]]; then
+  echo "start"
+elif [[ "$auid" = "0" ]] || [[ "$aguid" == "0" ]]; then
+ echo "can't run in Root user. Default user still run."
+else
+  usermod -u $auid $auser
+  groupmod -g $agid $auser
+fi
+
 # Start apache
 exec httpd -D FOREGROUND
