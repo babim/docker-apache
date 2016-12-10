@@ -30,5 +30,18 @@ if [ -z "`ls /etc/php`" ]; then cp -R /etc-start/php/* /etc/php; fi
 	-e "s|^;*\(opcache.revalidate_freq\) *=.*|\1 = 60|" \
 	/etc/php/7.0/*/php.ini
 
+# set ID docker run
+agid=${agid:-$auid}
+auser=www-data
+
+if [[ -z "${auid}" ]]; then
+  echo "start"
+elif [[ "$auid" = "0" ]] || [[ "$aguid" == "0" ]]; then
+ echo "can't run in Root user. Default user still run."
+else
+  usermod -u $auid $auser
+  groupmod -g $agid $auser
+fi
+
 # Start apache
 apache2 -D FOREGROUND
