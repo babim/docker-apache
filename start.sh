@@ -12,7 +12,7 @@ if [[ -z "${auid}" ]]; then
   echo "start"
 elif [[ "$auid" = "0" ]] || [[ "$aguid" == "0" ]]; then
 	echo "run in user root"
-	auser=root
+	export auser=root
 	export APACHE_RUN_USER=$auser
 	export APACHE_RUN_GROUP=$auser
 	#sed -i -e "/^user = .*/cuser = $auser" /etc/php/5.6/fpm/php-fpm.conf
