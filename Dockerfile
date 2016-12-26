@@ -1,12 +1,12 @@
 FROM babim/ubuntubase
 
-RUN apt-get update && \
-    apt-get install apache2 libapache2-mod-fcgid -y --force-yes && a2enmod proxy proxy_fcgi && a2enmod rewrite && \
+RUN add-apt-repository ppa:ondrej/apache2 -y && apt-get update && \
+    apt-get install apache2 libapache2-mod-fcgid -y --force-yes && a2enmod proxy proxy_fcgi && \
+    a2enmod rewrite && a2enmod headers && a2enmod http2 && \ && \
     apt-get clean && \
     apt-get autoclean && \
     apt-get autoremove && \
-    rm -rf /var/lib/apt/lists/** && \
-    a2enmod headers
+    rm -rf /var/lib/apt/lists/*
 
 # Define mountable directories.
 VOLUME ["/var/log/apache2", "/var/www", "/etc/apache2"]
