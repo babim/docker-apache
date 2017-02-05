@@ -3,9 +3,8 @@ export TERM=xterm
 
 # Prepare
 if [ -z "`ls /etc/apache2`" ]; then cp -R /etc-start/apache2/* /etc/apache2; fi
-if [ -z "`ls /etc/php7`" ]; then cp -R /etc-start/php7/* /etc/php7; fi
-if [ -z "`ls /var/www`" ]; then cp -R /etc-start/www/* /var/www; fi
-
+if [ -z "`ls /etc/php7`" ]; then 
+	cp -R /etc-start/php7/* /etc/php7
    # Set environments
     TIMEZONE1=${TIMEZONE:-Asia/Ho_Chi_Minh}
     PHP_MEMORY_LIMIT1=${PHP_MEMORY_LIMIT:-512M}
@@ -31,6 +30,8 @@ if [ -z "`ls /var/www`" ]; then cp -R /etc-start/www/* /var/www; fi
         sed -i -e "s|^;*\(opcache.max_accelerated_files\) *=.*|\1 = 4000|" /etc/php7/php.ini
         sed -i -e "s|^;*\(opcache.memory_consumption\) *=.*|\1 = 128|" /etc/php7/php.ini
 	sed -i -e "s|^;*\(opcache.revalidate_freq\) *=.*|\1 = 60|" /etc/php7/php.ini
+fi
+if [ -z "`ls /var/www`" ]; then cp -R /etc-start/www/* /var/www; fi
 
 # set ID docker run
 agid=${agid:-$auid}
