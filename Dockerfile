@@ -12,7 +12,7 @@ RUN apt-get update && \
     php-geoip php-mongodb php-oauth php-redis php-smbclient php-uploadprogress php5.6-phpdbg  \
     php5.6-opcache php-xdebug php-memcached php5.6-bz2 php5.6-odbc php5.6-interbase php5.6-gmp php5.6-xsl php-gmagick \
     php5.6-soap php5.6-xml && \
-    a2enmod rewrite && a2enmod headers && a2enmod http2
+    a2enmod rewrite headers http2 ssl
 
 RUN apt-get clean && \
     apt-get autoclean && \
