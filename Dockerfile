@@ -5,7 +5,7 @@ RUN apt-get update && \
     add-apt-repository ppa:ondrej/php -y && \
     add-apt-repository ppa:ondrej/apache2 -y && \
     apt-get update && \
-    apt-get install -y --force-yes \
+    apt-get install -y --force-yes inetutils-ping telnet \
     apache2 php7.0 libapache2-mod-php7.0 && \
     apt-get install -y --force-yes imagemagick \
     php7.0-cgi php7.0-cli php7.0-phpdbg libphp7.0-embed php7.0-dev php-xdebug sqlite3 \
