@@ -3,7 +3,7 @@ FROM babim/ubuntubase
 RUN apt-get update && \
     apt-get install software-properties-common -y && \
     add-apt-repository ppa:ondrej/apache2 -y && apt-get update && \
-    apt-get install apache2 libapache2-mod-fcgid -y --force-yes && \
+    apt-get install apache2 libapache2-mod-fcgid inetutils-ping telnet -y --force-yes && \
     a2enmod proxy proxy_fcgi rewrite headers http2 ssl && \
     apt-get clean && \
     apt-get autoclean && \
