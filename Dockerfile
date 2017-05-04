@@ -5,7 +5,7 @@ RUN apt-get update && \
     add-apt-repository ppa:ondrej/apache2 -y && apt-get update && \
     apt-get install apache2 libapache2-mod-fcgid inetutils-ping telnet -y --force-yes && \
     a2enmod proxy proxy_fcgi rewrite headers http2 ssl && \
-    wget https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_amd64.deb && dpkg -i -pagespeed-stable_current_amd64.deb && rm -f -pagespeed-stable_current_amd64.deb && \
+    wget https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_amd64.deb && dpkg -i mod-pagespeed-stable_current_amd64.deb && rm -f mod-pagespeed-stable_current_amd64.deb && \
     apt-get clean && \
     apt-get autoclean && \
     apt-get autoremove && \
