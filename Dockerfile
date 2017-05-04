@@ -14,7 +14,8 @@ RUN apt-get update && \
     php5.6-soap php5.6-xml && \
     a2enmod rewrite headers http2 ssl
 
-RUN apt-get clean && \
+RUN wget https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_amd64.deb && dpkg -i mod-pagespeed-stable_current_amd64.deb && rm -f mod-pagespeed-stable_current_amd64.deb && \
+    apt-get clean && \
     apt-get autoclean && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/*
