@@ -19,7 +19,10 @@ RUN apt-get update && \
 	#&& pecl install mongodb \
 	#&& echo "extension=mongodb.so" >> /etc/php/7.0/apache2/php.ini \
 	#&& echo "extension=mongodb.so" >> /etc/php/7.0/cli/php.ini
-	
+
+# install option for webapp (owncloud)
+RUN apt-get install -y --force-yes smbclient ffmpeg ghostscript openexr openexr openexr libxml2 gamin
+
 RUN apt-get clean && \
     apt-get autoclean && \
     apt-get autoremove && \
