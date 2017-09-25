@@ -36,7 +36,7 @@ docker run -it -p 80:80 -p 443:443 -v /abc:/etc/apache2/sites-available  -v /dat
 Volume:
 ```
 /var/www
-/etc/apache
+/etc/apache2
 /etc/php
 ```
 
