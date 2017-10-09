@@ -16,19 +16,20 @@ RUN apt-get update && \
 RUN apt-get install -y --force-yes imagemagick smbclient ffmpeg ghostscript openexr openexr openexr libxml2 gamin
 
 # install oracle client extension
-RUN wget http://media.matmagoc.com/oracle/instantclient-basic-linux.x64-12.2.0.1.0.zip && \
-    wget http://media.matmagoc.com/oracle/instantclient-sdk-linux.x64-12.2.0.1.0.zip && \
-    wget http://media.matmagoc.com/oracle/instantclient-sqlplus-linux.x64-12.2.0.1.0.zip && \
-    unzip instantclient-basic-linux.x64-12.2.0.1.0.zip -d /usr/local/ && \
-    unzip instantclient-sdk-linux.x64-12.2.0.1.0.zip -d /usr/local/ && \
-    unzip instantclient-sqlplus-linux.x64-12.2.0.1.0.zip -d /usr/local/ && \
+ENV ORACLE_VERSION 12.2.0.1.0
+RUN wget http://media.matmagoc.com/oracle/instantclient-basic-linux.x64-$ORACLE_VERSION.zip && \
+    wget http://media.matmagoc.com/oracle/instantclient-sdk-linux.x64-$ORACLE_VERSION.zip && \
+    wget http://media.matmagoc.com/oracle/instantclient-sqlplus-linux.x64-$ORACLE_VERSION.zip && \
+    unzip instantclient-basic-linux.x64-$ORACLE_VERSION.zip -d /usr/local/ && \
+    unzip instantclient-sdk-linux.x64-$ORACLE_VERSION.zip -d /usr/local/ && \
+    unzip instantclient-sqlplus-linux.x64-$ORACLE_VERSION.zip -d /usr/local/ && \
     ln -s /usr/local/instantclient_12_2 /usr/local/instantclient && \
     ln -s /usr/local/instantclient/libclntsh.so.12.1 /usr/local/instantclient/libclntsh.so && \
     ln -s /usr/local/instantclient/sqlplus /usr/bin/sqlplus && \
     echo 'instantclient,/usr/local/instantclient' | pecl install oci8-2.0.12 && \
     echo "extension=oci8.so" > /etc/php/5.6/apache2/conf.d/30-oci8.ini && \
-    rm -f instantclient-basic-linux.x64-12.2.0.1.0.zip instantclient-sdk-linux.x64-12.2.0.1.0.zip instantclient-sqlplus-linux.x64-12.2.0.1.0.zip
-
+    rm -f instantclient-basic-linux.x64-$ORACLE_VERSION.zip instantclient-sdk-linux.x64-$ORACLE_VERSION.zip instantclient-sqlplus-linux.x64-$ORACLE_VERSION.zip
+  
 RUN wget https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_amd64.deb && dpkg -i mod-pagespeed-stable_current_amd64.deb && rm -f mod-pagespeed-stable_current_amd64.deb && \
     apt-get clean && \
     apt-get autoclean && \
