@@ -19,9 +19,9 @@ RUN apt-get install -y --force-yes imagemagick smbclient ffmpeg ghostscript open
 RUN wget http://media.matmagoc.com/oracle/instantclient-basic-linux.x64-12.2.0.1.0.zip && \
     wget http://media.matmagoc.com/oracle/instantclient-sdk-linux.x64-12.2.0.1.0.zip && \
     wget http://media.matmagoc.com/oracle/instantclient-sqlplus-linux.x64-12.2.0.1.0.zip && \
-    unzip /tmp/instantclient-basic-linux.x64-12.2.0.1.0.zip -d /usr/local/ && \
-    unzip /tmp/instantclient-sdk-linux.x64-12.2.0.1.0.zip -d /usr/local/ && \
-    unzip /tmp/instantclient-sqlplus-linux.x64-12.2.0.1.0.zip -d /usr/local/ && \
+    unzip instantclient-basic-linux.x64-12.2.0.1.0.zip -d /usr/local/ && \
+    unzip instantclient-sdk-linux.x64-12.2.0.1.0.zip -d /usr/local/ && \
+    unzip instantclient-sqlplus-linux.x64-12.2.0.1.0.zip -d /usr/local/ && \
     ln -s /usr/local/instantclient_12_2 /usr/local/instantclient && \
     ln -s /usr/local/instantclient/libclntsh.so.12.2 /usr/local/instantclient/libclntsh.so && \
     ln -s /usr/local/instantclient/sqlplus /usr/bin/sqlplus && \
