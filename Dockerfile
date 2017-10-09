@@ -5,7 +5,7 @@ RUN apt-get update && \
     add-apt-repository ppa:ondrej/php -y && \
     add-apt-repository ppa:ondrej/apache2 -y && \
     apt-get update && \
-    apt-get install -y --force-yes apache2 php5.6 inetutils-ping telnet \
+    apt-get install -y --force-yes apache2 php5.6 inetutils-ping telnet wget \
     	php5.6-json php5.6-gd php5.6-sqlite curl php5.6-curl php5.6-ldap php5.6-mysql php5.6-pgsql \
         php5.6-imap php5.6-tidy php5.6-xmlrpc php5.6-zip php5.6-mcrypt php5.6-memcache php5.6-intl \
     	php5.6-mbstring imagemagick php5.6-sqlite3 php5.6-sybase php5.6-bcmath php5.6-soap php5.6-xml \
@@ -14,6 +14,19 @@ RUN apt-get update && \
 
 # install option for webapp (owncloud)
 RUN apt-get install -y --force-yes imagemagick smbclient ffmpeg ghostscript openexr openexr openexr libxml2 gamin
+
+# install oracle client extension
+RUN wget http://media.matmagoc.com/oracle/instantclient-basic-linux.x64-12.2.0.1.0.zip && \
+    wget http://media.matmagoc.com/oracle/instantclient-sdk-linux.x64-12.2.0.1.0.zip && \
+    wget http://media.matmagoc.com/oracle/instantclient-sqlplus-linux.x64-12.2.0.1.0.zip && \
+    unzip /tmp/instantclient-basic-linux.x64-12.2.0.1.0.zip -d /usr/local/ && \
+    unzip /tmp/instantclient-sdk-linux.x64-12.2.0.1.0.zip -d /usr/local/ && \
+    unzip /tmp/instantclient-sqlplus-linux.x64-12.2.0.1.0.zip -d /usr/local/ && \
+    ln -s /usr/local/instantclient_12_2 /usr/local/instantclient && \
+    ln -s /usr/local/instantclient/libclntsh.so.12.2 /usr/local/instantclient/libclntsh.so && \
+    ln -s /usr/local/instantclient/sqlplus /usr/bin/sqlplus && \
+    echo 'instantclient,/usr/local/instantclient' | pecl install oci8 && \
+    echo "extension=oci8.so" > /etc/php/5.6/apache2/conf.d/30-oci8.ini
 
 RUN wget https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_amd64.deb && dpkg -i mod-pagespeed-stable_current_amd64.deb && rm -f mod-pagespeed-stable_current_amd64.deb && \
     apt-get clean && \
