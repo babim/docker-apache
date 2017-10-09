@@ -5,7 +5,7 @@ RUN apt-get update && \
     add-apt-repository ppa:ondrej/php -y && \
     add-apt-repository ppa:ondrej/apache2 -y && \
     apt-get update && \
-    apt-get install -y --force-yes apache2 php5.6 inetutils-ping telnet wget unzip libaio-dev \
+    apt-get install -y --force-yes apache2 php5.6 inetutils-ping telnet wget unzip libaio-dev php5.6-dev \
     	php5.6-json php5.6-gd php5.6-sqlite curl php5.6-curl php5.6-ldap php5.6-mysql php5.6-pgsql \
         php5.6-imap php5.6-tidy php5.6-xmlrpc php5.6-zip php5.6-mcrypt php5.6-memcache php5.6-intl \
     	php5.6-mbstring imagemagick php5.6-sqlite3 php5.6-sybase php5.6-bcmath php5.6-soap php5.6-xml \
@@ -23,9 +23,9 @@ RUN wget http://media.matmagoc.com/oracle/instantclient-basic-linux.x64-12.2.0.1
     unzip instantclient-sdk-linux.x64-12.2.0.1.0.zip -d /usr/local/ && \
     unzip instantclient-sqlplus-linux.x64-12.2.0.1.0.zip -d /usr/local/ && \
     ln -s /usr/local/instantclient_12_2 /usr/local/instantclient && \
-    ln -s /usr/local/instantclient/libclntsh.so.12.2 /usr/local/instantclient/libclntsh.so && \
+    ln -s /usr/local/instantclient/libclntsh.so.12.1 /usr/local/instantclient/libclntsh.so && \
     ln -s /usr/local/instantclient/sqlplus /usr/bin/sqlplus && \
-    echo 'instantclient,/usr/local/instantclient' | pecl install oci8 && \
+    echo 'instantclient,/usr/local/instantclient' | pecl install oci8-2.0.12 && \
     echo "extension=oci8.so" > /etc/php/5.6/apache2/conf.d/30-oci8.ini && \
     rm -f instantclient-basic-linux.x64-12.2.0.1.0.zip instantclient-sdk-linux.x64-12.2.0.1.0.zip instantclient-sqlplus-linux.x64-12.2.0.1.0.zip
 
