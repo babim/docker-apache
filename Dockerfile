@@ -5,7 +5,7 @@ RUN apt-get update && \
     add-apt-repository ppa:ondrej/php -y && \
     add-apt-repository ppa:ondrej/apache2 -y && \
     apt-get update && \
-    apt-get install -y --force-yes apache2 php5.6 inetutils-ping telnet wget unzip libaio-dev php5.6-dev php-pear \
+    apt-get install -y --force-yes apache2 php5.6 inetutils-ping telnet \
     	php5.6-json php5.6-gd php5.6-sqlite curl php5.6-curl php5.6-ldap php5.6-mysql php5.6-pgsql \
         php5.6-imap php5.6-tidy php5.6-xmlrpc php5.6-zip php5.6-mcrypt php5.6-memcache php5.6-intl \
     	php5.6-mbstring imagemagick php5.6-sqlite3 php5.6-sybase php5.6-bcmath php5.6-soap php5.6-xml \
@@ -17,6 +17,7 @@ RUN apt-get install -y --force-yes imagemagick smbclient ffmpeg ghostscript open
 
 # install oracle client extension
 ENV ORACLE_VERSION 12.2.0.1.0
+RUN apt-get install -y --force-yes wget unzip libaio-dev php5.6-dev php-pear
 RUN wget http://media.matmagoc.com/oracle/instantclient-basic-linux.x64-$ORACLE_VERSION.zip && \
     wget http://media.matmagoc.com/oracle/instantclient-sdk-linux.x64-$ORACLE_VERSION.zip && \
     wget http://media.matmagoc.com/oracle/instantclient-sqlplus-linux.x64-$ORACLE_VERSION.zip && \
