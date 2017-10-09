@@ -21,14 +21,14 @@ if [ -z "`ls /etc/php`" ]; then
     	-e "s|;*post_max_size =.*|post_max_size = ${PHP_MAX_POST1}|i" \
     	-e "s/max_input_time = 60/max_input_time = ${MAX_INPUT_TIME1}/" \
 	-e "s/max_execution_time = 30/max_execution_time = ${MAX_EXECUTION_TIME1}/" \
-	/etc/php/7.0/*/php.ini
-	sed -i -e "s|^;*\(opcache.enable\) *=.*|\1 = 1|" /etc/php/7.0/*/php.ini
-        sed -i -e "s|^;*\(opcache.enable_cli\) *=.*|\1 = 1|" /etc/php/7.0/*/php.ini
-        sed -i -e "s|^;*\(opcache.fast_shutdown\) *=.*|\1 = 1|" /etc/php/7.0/*/php.ini
-        sed -i -e "s|^;*\(opcache.interned_strings_buffer\) *=.*|\1 = 8|" /etc/php/7.0/*/php.ini
-        sed -i -e "s|^;*\(opcache.max_accelerated_files\) *=.*|\1 = 4000|" /etc/php/7.0/*/php.ini
-        sed -i -e "s|^;*\(opcache.memory_consumption\) *=.*|\1 = 128|" /etc/php/7.0/*/php.ini
-	sed -i -e "s|^;*\(opcache.revalidate_freq\) *=.*|\1 = 60|" /etc/php/7.0/*/php.ini
+	/etc/php/7.2/*/php.ini
+	sed -i -e "s|^;*\(opcache.enable\) *=.*|\1 = 1|" /etc/php/7.2/*/php.ini
+        sed -i -e "s|^;*\(opcache.enable_cli\) *=.*|\1 = 1|" /etc/php/7.2/*/php.ini
+        sed -i -e "s|^;*\(opcache.fast_shutdown\) *=.*|\1 = 1|" /etc/php/7.2/*/php.ini
+        sed -i -e "s|^;*\(opcache.interned_strings_buffer\) *=.*|\1 = 8|" /etc/php/7.2/*/php.ini
+        sed -i -e "s|^;*\(opcache.max_accelerated_files\) *=.*|\1 = 4000|" /etc/php/7.2/*/php.ini
+        sed -i -e "s|^;*\(opcache.memory_consumption\) *=.*|\1 = 128|" /etc/php/7.2/*/php.ini
+	sed -i -e "s|^;*\(opcache.revalidate_freq\) *=.*|\1 = 60|" /etc/php/7.2/*/php.ini
 fi
 
 # set ID docker run
@@ -42,8 +42,8 @@ elif [[ "$auid" = "0" ]] || [[ "$aguid" == "0" ]]; then
 	export auser=root
 	export APACHE_RUN_USER=$auser
 	export APACHE_RUN_GROUP=$auser
-	#sed -i -e "/^user = .*/cuser = $auser" /etc/php/7.0/fpm/php-fpm.conf
-	#sed -i -e "/^group = .*/cgroup = $auser" /etc/php/7.0/fpm/php-fpm.conf
+	#sed -i -e "/^user = .*/cuser = $auser" /etc/php/7.2/fpm/php-fpm.conf
+	#sed -i -e "/^group = .*/cgroup = $auser" /etc/php/7.2/fpm/php-fpm.conf
 	#sed -i -e "/^user .*/cuser  $auser;" /etc/nginx/nginx.conf
 	#sed -i -e "/^#user .*/cuser  $auser;" /etc/nginx/nginx.conf
 elif id $auid >/dev/null 2>&1; then
@@ -51,8 +51,8 @@ elif id $auid >/dev/null 2>&1; then
 else
 if id $auser >/dev/null 2>&1; then
         echo "user exists"
-	#sed -i -e "/^user = .*/cuser = $auser" /etc/php/7.0/fpm/php-fpm.conf
-	#sed -i -e "/^group = .*/cgroup = $auser" /etc/php/7.0/fpm/php-fpm.conf
+	#sed -i -e "/^user = .*/cuser = $auser" /etc/php/7.2/fpm/php-fpm.conf
+	#sed -i -e "/^group = .*/cgroup = $auser" /etc/php/7.2/fpm/php-fpm.conf
 	#sed -i -e "/^user .*/cuser  $auser;" /etc/nginx/nginx.conf
 	#sed -i -e "/^#user .*/cuser  $auser;" /etc/nginx/nginx.conf
 	export APACHE_RUN_USER=$auser
@@ -71,8 +71,8 @@ else
 	#addgroup -g $agid $auser && adduser -D -H -G $auser -s /bin/false -u $auid $auser
 	# create user ubuntu/debian
 	groupadd -g $agid $auser && useradd --system --uid $auid --shell /usr/sbin/nologin -g $auser $auser
-	#sed -i -e "/^user = .*/cuser = $auser" /etc/php/7.0/fpm/php-fpm.conf
-	#sed -i -e "/^group = .*/cgroup = $auser" /etc/php/7.0/fpm/php-fpm.conf
+	#sed -i -e "/^user = .*/cuser = $auser" /etc/php/7.2/fpm/php-fpm.conf
+	#sed -i -e "/^group = .*/cgroup = $auser" /etc/php/7.2/fpm/php-fpm.conf
 	#sed -i -e "/^user .*/cuser  $auser;" /etc/nginx/nginx.conf
 	#sed -i -e "/^#user .*/cuser  $auser;" /etc/nginx/nginx.conf
 fi
