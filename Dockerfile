@@ -29,6 +29,7 @@ RUN wget http://media.matmagoc.com/oracle/instantclient-basic-linux.x64-$ORACLE_
     ln -s /usr/local/instantclient/sqlplus /usr/bin/sqlplus && \
     echo 'instantclient,/usr/local/instantclient' | pecl install oci8-2.0.12 && \
     echo "extension=oci8.so" > /etc/php/5.6/apache2/conf.d/30-oci8.ini && \
+    echo "extension=oci8.so" > /etc/php/5.6/cli/conf.d/30-oci8.ini && \
     rm -f instantclient-basic-linux.x64-$ORACLE_VERSION.zip instantclient-sdk-linux.x64-$ORACLE_VERSION.zip instantclient-sqlplus-linux.x64-$ORACLE_VERSION.zip
   
 RUN wget https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_amd64.deb && dpkg -i mod-pagespeed-stable_current_amd64.deb && rm -f mod-pagespeed-stable_current_amd64.deb && \
