@@ -74,5 +74,12 @@ fi
 
 fi
 
+# ssh
+if [ -f "/runssh.sh" ]; then /runssh.sh; fi
+# cron
+if [ -f "/runcron.sh" ]; then /runcron.sh; fi
+# nfs
+if [ -f "/mountnfs.sh" ]; then /mountnfs.sh; fi
+
 # Start apache
 exec httpd -D FOREGROUND
