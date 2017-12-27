@@ -7,7 +7,6 @@ RUN apt-get update && \
     apt-get update && \
     apt-get install -y --force-yes inetutils-ping telnet \
     apache2 php7.2 libapache2-mod-php7.2 && \
-    wget https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_amd64.deb && dpkg -i mod-pagespeed-stable_current_amd64.deb && rm -f mod-pagespeed-stable_current_amd64.deb && \
     apt-get install -y --force-yes imagemagick \
     php7.2-cgi php7.2-cli php7.2-phpdbg libphp7.2-embed php7.2-dev php-xdebug sqlite3 \
     php7.2-curl php7.2-gd php7.2-imap php7.2-interbase php7.2-intl php7.2-ldap php7.2-readline php7.2-odbc \
