@@ -3,7 +3,7 @@ FROM babim/apache:php7.2
 # install laravel
 RUN apt-get update && apt-get install -y composer php-*dom php-*mbstring zip unzip git
 RUN cd /var/www/html && git clone https://github.com/laravel/laravel && \
-    cd lavarel && composer install
+    cd laravel && composer install
 
 # Define mountable directories.
 RUN mkdir -p /etc-start/www && cp -R /var/www/* /etc-start/www
