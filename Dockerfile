@@ -1,7 +1,7 @@
 FROM babim/apache:php7.2
 
 # install laravel
-RUN apt-get update && apt-get install -f composer php-*dom php-*mbstring zip unzip git
+RUN apt-get update && apt-get install -y composer php-*dom php-*mbstring zip unzip git
 RUN cd /var/www/html && git clone https://github.com/laravel/laravel && \
     cd lavarel && composer install
 
