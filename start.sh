@@ -23,6 +23,10 @@ if [ -z "`ls /etc/php`" ]; then
 	-e "s/max_execution_time = 30/max_execution_time = ${MAX_EXECUTION_TIME1}/" \
 	/etc/php/5.6/*/php.ini
 fi
+if [ -z "`ls /var/www`" ]; then
+	cp -R /etc-start/www/* /var/www
+	chown -R www-data:www-data /var/www
+fi
 
 # set ID docker run
 agid=${agid:-$auid}
