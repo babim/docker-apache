@@ -4,11 +4,6 @@ export TERM=xterm
 if [ -z "`ls /etc/apache2`" ]; then cp -R /etc-start/apache2/* /etc/apache2; fi
 if [ -z "`ls /etc/php`" ]; then
 	cp -R /etc-start/php/* /etc/php
-fi
-if [ -z "`ls /var/www`" ]; then
-	cp -R /etc-start/www/* /var/www
-	chown -R www-data:www-data /var/www
-fi
 
     # Set environments
     TIMEZONE1=${TIMEZONE:-Asia/Ho_Chi_Minh}
@@ -28,6 +23,11 @@ fi
     	-e "s/max_input_time = 60/max_input_time = ${MAX_INPUT_TIME1}/" \
 	-e "s/max_execution_time = 30/max_execution_time = ${MAX_EXECUTION_TIME1}/" \
 	/etc/php/5.6/*/php.ini
+fi
+if [ -z "`ls /var/www`" ]; then
+	cp -R /etc-start/www/* /var/www
+	chown -R www-data:www-data /var/www
+fi
 
 # set ID docker run
 agid=${agid:-$auid}
