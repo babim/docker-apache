@@ -4,11 +4,6 @@ export TERM=xterm
 if [ -z "`ls /etc/apache2`" ]; then cp -R /etc-start/apache2/* /etc/apache2; fi
 if [ -z "`ls /etc/php`" ]; then 
 	cp -R /etc-start/php/* /etc/php
-fi
-if [ -z "`ls /var/www`" ]; then
-	cp -R /etc-start/www/* /var/www
-	chown -R www-data:www-data /var/www
-fi
 
  # Set environments
     TIMEZONE1=${TIMEZONE:-Asia/Ho_Chi_Minh}
@@ -35,6 +30,11 @@ fi
         sed -i -e "s|^;*\(opcache.max_accelerated_files\) *=.*|\1 = 4000|" /etc/php/7.0/*/php.ini
         sed -i -e "s|^;*\(opcache.memory_consumption\) *=.*|\1 = 128|" /etc/php/7.0/*/php.ini
 	sed -i -e "s|^;*\(opcache.revalidate_freq\) *=.*|\1 = 60|" /etc/php/7.0/*/php.ini
+fi
+if [ -z "`ls /var/www`" ]; then
+	cp -R /etc-start/www/* /var/www
+	chown -R www-data:www-data /var/www
+fi
 
 # set ID docker run
 agid=${agid:-$auid}
