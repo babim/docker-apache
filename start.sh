@@ -30,6 +30,10 @@ if [ -z "`ls /etc/php`" ]; then
         sed -i -e "s|^;*\(opcache.memory_consumption\) *=.*|\1 = 128|" /etc/php/7.1/*/php.ini
 	sed -i -e "s|^;*\(opcache.revalidate_freq\) *=.*|\1 = 60|" /etc/php/7.1/*/php.ini
 fi
+if [ -z "`ls /var/www`" ]; then
+	cp -R /etc-start/www/* /var/www
+	chown -R www-data:www-data /var/www
+fi
 
 # set ID docker run
 agid=${agid:-$auid}
