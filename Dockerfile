@@ -5,6 +5,9 @@ RUN apt-get update && apt-get install -f composer php-*dom php-*mbstring zip unz
 RUN cd /var/www/html && git clone https://github.com/laravel/laravel && \
     cd lavarel && composer install
 
+# Define mountable directories.
+RUN mkdir -p /etc-start/www && cp -R /var/www/* /etc-start/www
+
 # clean depend
 RUN apt-get purge git -y
 
