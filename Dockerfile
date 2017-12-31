@@ -14,5 +14,5 @@ RUN apt-get purge git -y
 # clean
 RUN apt-get clean && \
     apt-get autoclean && \
-    apt-get autoremove && \
+    apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
