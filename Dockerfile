@@ -17,7 +17,8 @@ RUN apt-get update && \
     a2enmod rewrite headers http2 ssl
 	#&& pecl install mongodb \
 	#&& echo "extension=mongodb.so" >> /etc/php/7.1/apache2/php.ini \
-	#&& echo "extension=mongodb.so" >> /etc/php/7.1/cli/php.ini
+	#&& echo "extension=mongodb.so" >> /etc/php/7.1/cli/php.ini && \
+    ln -sf /usr/bin/php7.1 /etc/alternatives/php
 
 # install option for webapp (owncloud)
 RUN apt-get install -y --force-yes smbclient ffmpeg ghostscript openexr openexr openexr libxml2 gamin
