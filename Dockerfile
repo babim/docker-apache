@@ -10,7 +10,8 @@ RUN apt-get update && \
         php5.6-imap php5.6-tidy php5.6-xmlrpc php5.6-zip php5.6-mcrypt php5.6-memcache php5.6-intl \
     	php5.6-mbstring imagemagick php5.6-sqlite3 php5.6-sybase php5.6-bcmath php5.6-soap php5.6-xml \
     	php5.6-phpdbg php5.6-opcache php5.6-bz2 php5.6-odbc php5.6-interbase php5.6-gmp php5.6-xsl && \
-    a2enmod rewrite headers http2 ssl
+    a2enmod rewrite headers http2 ssl && \
+    ln -sf /usr/bin/php5.6 /etc/alternatives/php
 
 # install option for webapp (owncloud)
 RUN apt-get install -y --force-yes imagemagick smbclient ffmpeg ghostscript openexr openexr openexr libxml2 gamin
