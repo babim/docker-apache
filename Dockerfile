@@ -8,7 +8,7 @@ RUN cd /var/www/html && git clone https://github.com/laravel/laravel && \
     cd laravel && composer install
 
 # Define mountable directories.
-RUN mkdir -p /etc-start/laravel && cp -R /var/www/laravel/* /etc-start/laravel
+RUN mkdir -p /etc-start/www && cp -R /var/www/* /etc-start/www
 
 # clean depend
 RUN apt-get purge git -y
