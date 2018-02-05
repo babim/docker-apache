@@ -14,7 +14,7 @@ RUN apt-get update && \
     php7.0-sqlite3 php7.0-mysql php7.0-opcache php7.0-bz2 php7.0-mbstring php7.0-zip php-apcu php-imagick \
     php-memcached php-pear libsasl2-dev libssl-dev libsslcommon2-dev libcurl4-openssl-dev \
     php7.0-gmp php7.0-xml php7.0-bcmath php7.0-enchant php7.0-soap php7.0-xsl && \
-    a2enmod rewrite headers http2 ssl
+    a2enmod rewrite headers http2 ssl && \
 	#&& pecl install mongodb \
 	#&& echo "extension=mongodb.so" >> /etc/php/7.0/apache2/php.ini \
 	#&& echo "extension=mongodb.so" >> /etc/php/7.0/cli/php.ini && \
