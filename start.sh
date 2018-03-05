@@ -3,6 +3,10 @@
 export TERM=xterm
 
 if [ -z "`ls /etc/apache2`" ]; then cp -R /etc-start/apache2/* /etc/apache2; fi
+if [ -z "`ls /var/www`" ]; then
+	cp -R /etc-start/www/* /var/www
+	chown -R www-data:www-data /var/www
+fi
 
 # set ID docker run
 agid=${agid:-$auid}
