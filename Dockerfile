@@ -13,7 +13,8 @@ RUN apt-get update && \
 
 # Define mountable directories.
 VOLUME ["/var/log/apache2", "/var/www", "/etc/apache2"]
-RUN mkdir -p /etc-start/apache2 && cp -R /etc/apache2/* /etc-start/apache2
+RUN mkdir -p /etc-start/apache2 && cp -R /etc/apache2/* /etc-start/apache2 && \
+    mkdir -p /etc-start/www && cp -R /var/www/* /etc-start/www
 
 # Set Apache environment variables (can be changed on docker run with -e)
 ENV APACHE_RUN_USER www-data
