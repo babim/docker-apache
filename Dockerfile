@@ -4,11 +4,8 @@ FROM babim/apache:php7.2
 RUN apt-get update && apt-get install -y php-*dom php-*mbstring zip unzip git curl && \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
     ln -sf /usr/bin/php7.2 /etc/alternatives/php
-RUN cd /var/www/html && git clone https://github.com/laravel/laravel && \
+RUN cd /etc-start && git clone https://github.com/laravel/laravel && \
     cd laravel && composer install
-
-# Define mountable directories.
-RUN mkdir -p /etc-start/www && cp -R /var/www/* /etc-start/www
 
 # clean depend
 RUN apt-get purge git -y

@@ -37,7 +37,7 @@ if [ -z "`ls /var/www --hide='lost+found'`" ]; then
 	cp -R /etc-start/www/* /var/www
 	chown -R www-data:www-data /var/www
 fi
-if [ -z "`ls /var/www --hide='lost+found' --hide='laravel' --hide='.htaccess' --hide='index.html'`" ]; then
+if [ -z "`ls /var/www --hide='lost+found' --hide='html' --hide='.htaccess' --hide='index.html'`" ]; then
 	cp -R /etc-start/laravel /var/www/laravel
 	chown -R www-data:www-data /var/www/laravel
 fi
