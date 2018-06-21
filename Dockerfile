@@ -18,3 +18,5 @@ RUN apt-get clean && \
 
 ADD start.sh /start.sh
 RUN chmod 0755 /start.sh
+ADD option.sh /option.sh
+RUN chmod 0755 /option.sh
