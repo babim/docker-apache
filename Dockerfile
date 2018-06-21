@@ -5,6 +5,10 @@ RUN apk add --no-cache apache2 php5-apache2 imagemagick \
 	php5-xmlrpc php5-mcrypt php5-memcache php5-intl php5-zip php5-opcache php5-mssql php5-bz2 php5-odbc php5-gettext php5-dba php5-soap \
 	php5-xml php5-zlib php5-exif php5-pdo php5-pdo_odbc php5-pdo_dblib php5-pdo_sqlite php5-pdo_pgsql php5-pdo_mysql php5-pear
 
+# Download option
+RUN apk add --no-cache wget && wget https://raw.githubusercontent.com/babim/docker-tag-options/master/z%20SCRIPT%20AUTO/option.sh && \
+    mv option.sh /option.sh && chmod 755 /option.sh && apk del wget
+
 # Define mountable directories.
 VOLUME ["/var/log/apache2", "/var/www", "/etc/apache2", "/etc/php5"]
 RUN mkdir -p /etc-start/apache2 && cp -R /etc/apache2/* /etc-start/apache2 && \
@@ -29,6 +33,4 @@ RUN mkdir -p /run/apache2
 EXPOSE 80 443
 ADD start.sh /entrypoint.sh
 RUN chmod 0755 /entrypoint.sh
-ADD option.sh /option.sh
-RUN chmod 0755 /option.sh
 CMD ["/entrypoint.sh"]
