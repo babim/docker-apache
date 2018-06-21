@@ -10,6 +10,10 @@ RUN apk add --no-cache \
     php7-pear php7-pdo_dblib php7-pdo_pgsql php7-pdo_odbc php7-pdo_sqlite php7-pdo_mysql php7-pdo
 # disable: php7-memcached php7-apcu
 
+# Download option
+RUN apk add --no-cache wget && wget https://raw.githubusercontent.com/babim/docker-tag-options/master/z%20SCRIPT%20AUTO/option.sh && \
+    mv option.sh /option.sh && chmod 755 /option.sh && apk del wget
+
 # Define mountable directories.
 VOLUME ["/var/log/apache2", "/var/www", "/etc/apache2/", "/etc/php7"]
 RUN mkdir -p /etc-start/apache2 && cp -R /etc/apache2/* /etc-start/apache2 && \
@@ -22,6 +26,4 @@ RUN mkdir -p /run/apache2
 EXPOSE 80 443
 ADD start.sh /entrypoint.sh
 RUN chmod 0755 /entrypoint.sh
-ADD option.sh /option.sh
-RUN chmod 0755 /option.sh
 CMD ["/entrypoint.sh"]
