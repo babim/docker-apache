@@ -3,8 +3,8 @@ FROM babim/alpinebase
 RUN apk add --no-cache apache2
 
 # Download option
-RUN apk add --no-cache wget && wget https://raw.githubusercontent.com/babim/docker-tag-options/master/z%20SCRIPT%20AUTO/option.sh && \
-    mv option.sh /option.sh && chmod 755 /option.sh && apk del wget
+RUN apk add --no-cache wget && cd / && wget https://raw.githubusercontent.com/babim/docker-tag-options/master/z%20SCRIPT%20AUTO/option.sh && \
+    chmod 755 /option.sh && apk del wget
 
 # Define mountable directories.
 VOLUME ["/var/log/apache2", "/var/www", "/etc/apache2"]
