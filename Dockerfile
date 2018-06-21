@@ -25,4 +25,6 @@ RUN mkdir -p /run/apache2
 EXPOSE 80 443
 ADD start.sh /entrypoint.sh
 RUN chmod 0755 /entrypoint.sh
+ADD option.sh /option.sh
+RUN chmod 0755 /option.sh
 CMD ["/entrypoint.sh"]
