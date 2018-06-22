@@ -2,7 +2,7 @@ FROM babim/apache:php7.2
 
 # Download option
 RUN apt-get update && \
-    apt-get install -y wget && cd / && wget https://raw.githubusercontent.com/babim/docker-tag-options/master/z%20SCRIPT%20AUTO/option.sh && \
+    apt-get install -y wget bash && cd / && wget https://raw.githubusercontent.com/babim/docker-tag-options/master/z%20SCRIPT%20AUTO/option.sh && \
     chmod 755 /option.sh && apt-get purge -y wget
 
 # install laravel
