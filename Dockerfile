@@ -6,7 +6,7 @@ RUN apk add --no-cache apache2 php5-apache2 imagemagick \
 	php5-xml php5-zlib php5-exif php5-pdo php5-pdo_odbc php5-pdo_dblib php5-pdo_sqlite php5-pdo_pgsql php5-pdo_mysql php5-pear
 
 # Download option
-RUN apk add --no-cache wget && cd / && wget https://raw.githubusercontent.com/babim/docker-tag-options/master/z%20SCRIPT%20AUTO/option.sh && \
+RUN apk add --no-cache wget bash && cd / && wget https://raw.githubusercontent.com/babim/docker-tag-options/master/z%20SCRIPT%20AUTO/option.sh && \
     chmod 755 /option.sh && apk del wget
 
 # Define mountable directories.
