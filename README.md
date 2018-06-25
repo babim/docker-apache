@@ -10,7 +10,7 @@ Volume:
 /etc/php
 ```
 
-Environment
+## Environment apache, php value
 ```
 TIMEZONE
 PHP_MEMORY_LIMIT
@@ -20,10 +20,20 @@ PHP_MAX_POST
 MAX_INPUT_TIME
 MAX_EXECUTION_TIME
 ```
-with environment ID:
+## with environment ID:
 ```
 auid = user id
 agid = group id
 auser = username
 Default: agid = auid
+```
+## Environment apache, php value
+```
+TIMEZONE
+PHP_MEMORY_LIMIT
+MAX_UPLOAD
+PHP_MAX_FILE_UPLOAD
+PHP_MAX_POST
+MAX_INPUT_TIME
+MAX_EXECUTION_TIME
 ```
