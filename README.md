@@ -29,11 +29,11 @@ Default: agid = auid
 ```
 ## Environment ssh, cron option
 ```
-SSHOPTION=false
-CRONOPTION=false
-NFSOPTION=false
-SYNOLOGYOPTION=false
-UPGRADEOPTION=false
+SSH=false
+CRON=false
+NFS=false
+SYNOLOGY=false
+UPGRADE=false
 WWWUSER=www-data
 MYSQLUSER=mysql
 FULLOPTION=true
