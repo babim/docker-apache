@@ -10,7 +10,7 @@ RUN apt-get update && \
     add-apt-repository ppa:ondrej/php -y && \
     add-apt-repository ppa:ondrej/apache2 -y && \
     apt-get update && \
-    apt-get install -y --force-yes inetutils-ping apache2
+    apt-get install -y --force-yes inetutils-ping apache2 libapache2-mod-fcgid
 
 RUN apt-get clean && \
     apt-get autoclean && \
