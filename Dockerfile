@@ -6,20 +6,19 @@ RUN apt-get update && \
     chmod 755 /option.sh && apt-get purge -y wget
 
 RUN apt-get update && \
-    apt-get install software-properties-common wget -y && \
-    add-apt-repository ppa:ondrej/apache2 -y && apt-get update && \
-    apt-get install apache2 libapache2-mod-fcgid inetutils-ping telnet -y --force-yes && \
-    a2enmod proxy proxy_fcgi rewrite headers http2 ssl && \
-    wget https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_amd64.deb && dpkg -i mod-pagespeed-stable_current_amd64.deb && rm -f mod-pagespeed-stable_current_amd64.deb && \
-    apt-get clean && \
+    apt-get install software-properties-common -y && \
+    add-apt-repository ppa:ondrej/php -y && \
+    add-apt-repository ppa:ondrej/apache2 -y && \
+    apt-get update && \
+    apt-get install -y --force-yes inetutils-ping apache2
+
+RUN apt-get clean && \
     apt-get autoclean && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/*
 
 # Define mountable directories.
-VOLUME ["/var/log/apache2", "/var/www", "/etc/apache2"]
-RUN mkdir -p /etc-start/apache2 && cp -R /etc/apache2/* /etc-start/apache2 && \
-    mkdir -p /etc-start/www && cp -R /var/www/* /etc-start/www
+VOLUME ["/var/log/apache2", "/var/www", "/etc/apache2", "/etc/php"]
 
 # Set Apache environment variables (can be changed on docker run with -e)
 ENV APACHE_RUN_USER www-data
