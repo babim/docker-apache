@@ -34,7 +34,7 @@ RUN apt-get clean && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/*
 
-# Define mountable directories.
+# copy config
 RUN mkdir -p /etc-start/apache2 && cp -R /etc/apache2/* /etc-start/apache2 && \
     mkdir -p /etc-start/php && cp -R /etc/php/* /etc-start/php && \
     mkdir -p /etc-start/www && cp -R /var/www/* /etc-start/www
