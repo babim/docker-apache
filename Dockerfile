@@ -15,3 +15,6 @@ RUN apt-get clean && \
     apt-get autoclean && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
+
+# Define mountable directories.
+VOLUME ["/var/log/apache2", "/var/www", "/etc/apache2", "/etc/php"]
