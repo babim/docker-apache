@@ -1,7 +1,11 @@
 #!/bin/bash
 export TERM=xterm
 
+# copy config
+if [ -d "/etc/apache2" ]; then
 if [ -z "`ls /etc/apache2`" ]; then cp -R /etc-start/apache2/* /etc/apache2; fi
+fi
+if [ -d "/etc/php" ]; then
 if [ -z "`ls /etc/php`" ]; then 
 	cp -R /etc-start/php/* /etc/php
 
@@ -47,11 +51,13 @@ if [ -z "`ls /etc/php`" ]; then
 	$VARIABLE/php.ini
 	fi
 	done
-
 fi
+fi
+if [ -d "/var/www" ]; then
 if [ -z "`ls /var/www`" ]; then
 	cp -R /etc-start/www/* /var/www
 	chown -R www-data:www-data /var/www
+fi
 fi
 
 # set ID docker run

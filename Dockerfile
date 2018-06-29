@@ -19,9 +19,6 @@ RUN apt-get clean && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/*
 
-# Define mountable directories.
-VOLUME ["/var/log/apache2/", "/var/www/", "/etc/apache2/"]
-
 # Set Apache environment variables (can be changed on docker run with -e)
 ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data
