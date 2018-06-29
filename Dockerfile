@@ -2,7 +2,7 @@ FROM babim/apache:base
 
 RUN a2enmod proxy proxy_fcgi rewrite headers http2 ssl
 
-# Define mountable directories.
+# copy config.
 RUN mkdir -p /etc-start/apache2 && cp -R /etc/apache2/* /etc-start/apache2 && \
     mkdir -p /etc-start/www && cp -R /var/www/* /etc-start/www
 
