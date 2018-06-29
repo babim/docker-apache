@@ -20,7 +20,7 @@ RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 # Define mountable directories.
-VOLUME ["/var/log/apache2", "/var/www", "/etc/apache2", "/etc/php"]
+VOLUME ["/var/log/apache2/", "/var/www/", "/etc/apache2/", "/etc/php/"]
 
 # Set Apache environment variables (can be changed on docker run with -e)
 ENV APACHE_RUN_USER www-data
