@@ -1,4 +1,4 @@
-FROM babim/ubuntubase
+FROM babim/apache:base
 
 RUN apt-get update && \
     apt-get install -y --force-yes php7.2 libapache2-mod-php7.2 && \
