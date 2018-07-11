@@ -8,7 +8,7 @@ RUN apt-get update && \
     chmod 755 /option.sh && apt-get purge -y wget
 
 RUN apt-get update && \
-    apt-get install software-properties-common -y && \
+    apt-get install software-properties-common inetutils-ping -y && \
     add-apt-repository ppa:ondrej/php -y && \
     add-apt-repository ppa:ondrej/apache2 -y
 
