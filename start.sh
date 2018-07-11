@@ -1,10 +1,12 @@
-#!/bin/sh
+#!/bin/bash
 export TERM=xterm
 
 # Prepare
 if [ -z "`ls /etc/apache2`" ]; then cp -R /etc-start/apache2/* /etc/apache2; fi
 if [ -z "`ls /var/www`" ]; then cp -R /etc-start/www/* /var/www; fi
 
+# option with entrypoint
+if [ -f "/option.sh" ]; then /option.sh; fi
 
 # set ID docker run
 agid=${agid:-$auid}
