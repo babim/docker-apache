@@ -22,6 +22,13 @@ RUN apt-get install -y --force-yes smbclient ffmpeg ghostscript openexr openexr 
 RUN apt-get install -y php-*dom php-*mbstring zip unzip git curl && \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
     ln -sf /usr/bin/php7.2 /etc/alternatives/php
+
+# copy config
+RUN mkdir -p /etc-start/apache2 && cp -R /etc/apache2/* /etc-start/apache2 && \
+    mkdir -p /etc-start/php && cp -R /etc/php/* /etc-start/php && \
+    mkdir -p /etc-start/www && cp -R /var/www/* /etc-start/www
+
+# install laravel 2
 RUN cd /etc-start && git clone https://github.com/laravel/laravel && \
     cd laravel && composer install && cp .env.example .env
 
