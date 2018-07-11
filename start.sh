@@ -1,6 +1,9 @@
 #!/bin/sh
 export TERM=xterm
 
+# option with entrypoint
+if [ -f "/option.sh" ]; then /option.sh; fi
+
 # Prepare
 if [ -z "`ls /etc/apache2`" ]; then cp -R /etc-start/apache2/* /etc/apache2; fi
 if [ -z "`ls /etc/php5`" ]; then
