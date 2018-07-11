@@ -1,7 +1,7 @@
 FROM babim/apache:base
 
 RUN apt-get update && \
-    apt-get install -y --force-yes php7.2 libapache2-mod-php7.2 && \
+    apt-get install -y --force-yes apache2 php7.2 libapache2-mod-php7.2 && \
     apt-get install -y --force-yes imagemagick \
     php7.2-cgi php7.2-cli php7.2-phpdbg libphp7.2-embed php7.2-dev php-xdebug sqlite3 \
     php7.2-curl php7.2-gd php7.2-imap php7.2-interbase php7.2-intl php7.2-ldap php7.2-readline php7.2-odbc \
@@ -30,3 +30,18 @@ RUN mkdir -p /etc-start/apache2 && cp -R /etc/apache2/* /etc-start/apache2 && \
 
 # Define mountable directories.
 VOLUME ["/var/log/apache2", "/var/www", "/etc/apache2", "/etc/php"]
+
+# Set Apache environment variables (can be changed on docker run with -e)
+ENV APACHE_RUN_USER www-data
+ENV APACHE_RUN_GROUP www-data
+ENV APACHE_LOG_DIR /var/log/apache2
+ENV APACHE_PID_FILE /var/run/apache2.pid
+ENV APACHE_RUN_DIR /var/run/apache2
+ENV APACHE_LOCK_DIR /var/lock/apache2
+ENV APACHE_SERVERADMIN admin@localhost
+ENV APACHE_SERVERNAME localhost
+ENV APACHE_SERVERALIAS docker.localhost
+ENV APACHE_DOCUMENTROOT /var/www
+
+EXPOSE 80 443
+CMD ["/start.sh"]
