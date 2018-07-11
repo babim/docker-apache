@@ -1,6 +1,7 @@
 FROM babim/apache:base
 
-RUN a2enmod proxy proxy_fcgi rewrite headers http2 ssl
+RUN apt-get update && apt-get install -y apache2 && \
+    a2enmod proxy proxy_fcgi rewrite headers http2 ssl
 
 # copy config.
 RUN mkdir -p /etc-start/apache2 && cp -R /etc/apache2/* /etc-start/apache2 && \
