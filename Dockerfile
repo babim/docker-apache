@@ -53,3 +53,7 @@ ENV APACHE_SERVERADMIN admin@localhost
 ENV APACHE_SERVERNAME localhost
 ENV APACHE_SERVERALIAS docker.localhost
 ENV APACHE_DOCUMENTROOT /var/www
+
+EXPOSE 80 443
+CMD ["/start.sh"]
+CMD ["apache2", "-D", "FOREGROUND"]
