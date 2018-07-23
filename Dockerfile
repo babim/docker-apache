@@ -45,3 +45,4 @@ ENV APACHE_DOCUMENTROOT /var/www
 
 EXPOSE 80 443
 CMD ["/start.sh"]
+CMD ["apache2", "-D", "FOREGROUND"]
