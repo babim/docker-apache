@@ -30,4 +30,5 @@ RUN mkdir -p /run/apache2
 EXPOSE 80 443
 ADD start.sh /entrypoint.sh
 RUN chmod 0755 /entrypoint.sh
-CMD ["/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["httpd", "-D", "FOREGROUND"]
