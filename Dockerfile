@@ -11,5 +11,5 @@ RUN mkdir -p /etc-start/apache2 && cp -R /etc/apache2/* /etc-start/apache2 && \
 VOLUME ["/var/log/apache2", "/var/www", "/etc/apache2", "/etc/php"]
 
 EXPOSE 80 443
-CMD ["/start.sh"]
+ENTRYPOINT ["/start.sh"]
 CMD ["apache2", "-D", "FOREGROUND"]
