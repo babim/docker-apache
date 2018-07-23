@@ -9,3 +9,7 @@ RUN mkdir -p /etc-start/apache2 && cp -R /etc/apache2/* /etc-start/apache2 && \
 
 # Define mountable directories.
 VOLUME ["/var/log/apache2", "/var/www", "/etc/apache2", "/etc/php"]
+
+EXPOSE 80 443
+CMD ["/start.sh"]
+CMD ["apache2", "-D", "FOREGROUND"]
