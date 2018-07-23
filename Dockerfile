@@ -54,7 +54,7 @@ ENV APACHE_SERVERALIAS docker.localhost
 ENV APACHE_DOCUMENTROOT /var/www
 
 EXPOSE 80 443
-CMD ["/start.sh"]
+ENTRYPOINT ["/start.sh"]
 CMD ["apache2", "-D", "FOREGROUND"]
 
 # Define mountable directories.
