@@ -57,3 +57,6 @@ ENV APACHE_DOCUMENTROOT /var/www
 EXPOSE 80 443
 CMD ["/start.sh"]
 CMD ["apache2", "-D", "FOREGROUND"]
+
+# Define mountable directories.
+VOLUME ["/var/log/apache2", "/var/www", "/etc/apache2", "/etc/php"]
