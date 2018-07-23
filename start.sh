@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash -e
 export TERM=xterm
 
 # option with entrypoint
@@ -82,5 +82,4 @@ fi
 # option
 if [ -f "/option.sh" ]; then /option.sh; fi
 
-# Start apache
-exec httpd -D FOREGROUND
+exec "$@"
