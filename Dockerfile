@@ -30,4 +30,5 @@ ADD start.sh /entrypoint.sh
 RUN chmod 0755 /entrypoint.sh
 
 EXPOSE 80 443
-CMD ["/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["apache2", "-D", "FOREGROUND"]
