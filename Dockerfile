@@ -19,7 +19,3 @@ RUN apt-get clean && \
 
 ADD start.sh /start.sh
 RUN chmod 0755 /start.sh
-
-EXPOSE 80 443
-CMD ["/start.sh"]
-CMD ["apache2", "-D", "FOREGROUND"]
