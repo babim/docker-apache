@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 export TERM=xterm
 
 # copy config
@@ -111,5 +111,4 @@ fi
 # option
 if [ -f "/option.sh" ]; then /option.sh; fi
 
-# Start apache
-apache2 -D FOREGROUND
+exec "$@"
