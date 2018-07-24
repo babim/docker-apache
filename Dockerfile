@@ -13,6 +13,7 @@ RUN apt-get update && \
 	#&& pecl install mongodb \
 	#&& echo "extension=mongodb.so" >> /etc/php/7.1/apache2/php.ini \
 	#&& echo "extension=mongodb.so" >> /etc/php/7.1/cli/php.ini && \
+    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
     ln -sf /usr/bin/php7.1 /etc/alternatives/php
 
 # install option for webapp (owncloud)
