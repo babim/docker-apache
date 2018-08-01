@@ -29,7 +29,8 @@ RUN wget http://media.matmagoc.com/oracle/instantclient-basic-linux.x64-$ORACLE_
     echo "extension=oci8.so" > /etc/php/5.6/cli/conf.d/30-oci8.ini && \
     rm -f instantclient-basic-linux.x64-$ORACLE_VERSION.zip instantclient-sdk-linux.x64-$ORACLE_VERSION.zip instantclient-sqlplus-linux.x64-$ORACLE_VERSION.zip
   
-RUN apt-get clean && \
+RUN apt-get purge wget -y && \
+    apt-get clean && \
     apt-get autoclean && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/*
