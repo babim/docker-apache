@@ -42,19 +42,15 @@ elif [[ "$auid" = "0" ]] || [[ "$aguid" == "0" ]]; then
 	export auser=root
 	export APACHE_RUN_USER=$auser
 	export APACHE_RUN_GROUP=$auser
-	#sed -i -e "/^user = .*/cuser = $auser" /etc/php/7.0/fpm/php-fpm.conf
-	#sed -i -e "/^group = .*/cgroup = $auser" /etc/php/7.0/fpm/php-fpm.conf
-	#sed -i -e "/^user .*/cuser  $auser;" /etc/nginx/nginx.conf
-	#sed -i -e "/^#user .*/cuser  $auser;" /etc/nginx/nginx.conf
+	sed -i -e "/^user = .*/cuser = $auser" /etc/php5/fpm/php-fpm.conf
+	sed -i -e "/^group = .*/cgroup = $auser" /etc/php5/fpm/php-fpm.conf
 elif id $auid >/dev/null 2>&1; then
         echo "UID exists. Please change UID"
 else
 if id $auser >/dev/null 2>&1; then
         echo "user exists"
-	#sed -i -e "/^user = .*/cuser = $auser" /etc/php/7.0/fpm/php-fpm.conf
-	#sed -i -e "/^group = .*/cgroup = $auser" /etc/php/7.0/fpm/php-fpm.conf
-	#sed -i -e "/^user .*/cuser  $auser;" /etc/nginx/nginx.conf
-	#sed -i -e "/^#user .*/cuser  $auser;" /etc/nginx/nginx.conf
+	sed -i -e "/^user = .*/cuser = $auser" /etc/php5/fpm/php-fpm.conf
+	sed -i -e "/^group = .*/cgroup = $auser" /etc/php5/fpm/php-fpm.conf
 	export APACHE_RUN_USER=$auser
 	export APACHE_RUN_GROUP=$auser
 	# usermod alpine
@@ -71,10 +67,8 @@ else
 	addgroup -g $agid $auser && adduser -D -H -G $auser -s /bin/false -u $auid $auser
 	# create user ubuntu/debian
 	#groupadd -g $agid $auser && useradd --system --uid $auid --shell /usr/sbin/nologin -g $auser $auser
-	#sed -i -e "/^user = .*/cuser = $auser" /etc/php/7.0/fpm/php-fpm.conf
-	#sed -i -e "/^group = .*/cgroup = $auser" /etc/php/7.0/fpm/php-fpm.conf
-	#sed -i -e "/^user .*/cuser  $auser;" /etc/nginx/nginx.conf
-	#sed -i -e "/^#user .*/cuser  $auser;" /etc/nginx/nginx.conf
+	sed -i -e "/^user = .*/cuser = $auser" /etc/php5/fpm/php-fpm.conf
+	sed -i -e "/^group = .*/cgroup = $auser" /etc/php5/fpm/php-fpm.conf
 fi
 
 fi
