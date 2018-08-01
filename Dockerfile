@@ -1,6 +1,6 @@
 FROM babim/apache:base
 
-RUN apt-get update && \
+RUN apt-get update && apt-get install apache2 -y && \
     curl -s https://raw.githubusercontent.com/babim/docker-tag-options/master/z%20PHP%20install/php7.1.sh | bash
 
 RUN apt-get clean && \
