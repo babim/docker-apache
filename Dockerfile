@@ -24,7 +24,8 @@ RUN apt-get install -y php-*dom php-*mbstring zip unzip git curl && \
     ln -sf /usr/bin/php7.2 /etc/alternatives/php
 
 # prepare etc start
-RUN [ -d /etc/nginx ] || mkdir -p /etc-start/nginx && \
+RUN [ -d /etc-start ] || rm -rf /etc-start && \
+    [ -d /etc/nginx ] || mkdir -p /etc-start/nginx && \
     [ -d /etc/nginx ] || cp -R /etc/nginx/* /etc-start/nginx && \
     [ -d /etc/php ] || mkdir -p /etc-start/php && \
     [ -d /etc/php ] || cp -R /etc/php/* /etc-start/php && \
