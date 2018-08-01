@@ -16,5 +16,3 @@ RUN apt-get clean && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/*
 
-ADD start.sh /start.sh
-RUN chmod 0755 /start.sh
