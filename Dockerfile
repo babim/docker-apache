@@ -1,7 +1,7 @@
 FROM babim/apache:base
 
 ENV PHP_VERSION 5.6
-RUN wget -O - https://raw.githubusercontent.com/babim/docker-tag-options/master/z%20PHP%20install/apache.sh | bash
+RUN wget -O - https://raw.githubusercontent.com/babim/docker-tag-options/master/z%20PHP%20install/apache_install.sh | bash
 
 RUN apt-get clean && \
     apt-get autoclean && \
