@@ -1,4 +1,4 @@
-FROM babim/ubuntubase:16.04
+FROM babim/ubuntubase:18.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
