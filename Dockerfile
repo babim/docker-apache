@@ -24,8 +24,3 @@ ENV APACHE_SERVERALIAS docker.localhost
 ENV APACHE_DOCUMENTROOT /var/www
 
 EXPOSE 80 443
-ENTRYPOINT ["/start.sh"]
-CMD ["supervisord", "-nc", "/etc/supervisor/supervisord.conf"]
-
-# Define mountable directories.
-VOLUME ["/var/log/apache2", "/var/www", "/etc/apache2", "/etc/php"]
