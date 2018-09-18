@@ -6,5 +6,3 @@ RUN wget --no-check-certificate -O - https://raw.githubusercontent.com/babim/doc
 VOLUME ["/var/log/apache2", "/var/www", "/etc/apache2"]
 
 EXPOSE 80 443
-ENTRYPOINT ["/start.sh"]
-CMD ["supervisord", "-nc", "/etc/supervisor/supervisord.conf"]
