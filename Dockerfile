@@ -1,6 +1,6 @@
 FROM babim/apache:base
 
-ENV PHP_VERSION 7.1
+ENV PHP_VERSION 7.3
 RUN curl -s https://raw.githubusercontent.com/babim/docker-tag-options/master/z%20PHP%20install/apache_install.sh | bash
 
 # Define mountable directories.
