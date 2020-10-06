@@ -1,6 +1,6 @@
 FROM babim/apache:base
 
-ENV PHP_VERSION 7.2
+ENV PHP_VERSION 7.4
 ENV LARAVEL true
 RUN curl -s https://raw.githubusercontent.com/babim/docker-tag-options/master/z%20PHP%20install/apache_install.sh | bash
 
